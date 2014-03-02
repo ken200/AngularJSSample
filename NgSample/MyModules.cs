@@ -13,7 +13,7 @@ namespace NgSample
         {
             Get["/"] = _ =>
             {
-                return View["repeat"];
+                return View["index"];
             };
         }
     }
