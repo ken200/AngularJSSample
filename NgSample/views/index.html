@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+</head>
+<body ng-app>
+    <h1>商品管理</h1>
+    <div ng-controller="mainCtrl">
+        <form name="searchForm">
+            <p>検索<span style="margin-left:40px;">
+                <input type="text" ng-model="query" required />
+                <button ng-click="doSearch()" ng-disabled="searchForm.$invalid">検索</button>
+                </span>
+            </p>
+        </form>
+        <form name="addForm">
+            <p>追加<span style="margin-left:10px;">
+            <label for="newItemName">名称</label><input type="text" name="newItemName" ng-model="newItemName" required />
+            <label for="newItemPrice">価格</label><input type="number" name="newItemPrice" ng-model="newItemPrice" required ng-maxlength="5" />
+            <button ng-click="doAdd()" ng-disabled="addForm.$invalid">追加</button>
+            </span>
+            </p>
+        </form>
+        <ul ng-show="items.length">
+            <li ng-repeat="item in items">
+                {{item.name}} : {{item.price}} <a href="#" ng-click="deleteItem($index)">[x]</a>
+            </li>
+        </ul>
+        <p ng-hide="items.length">商品が存在しません</p>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html>
