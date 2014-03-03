@@ -1,5 +1,6 @@
-﻿function mainCtrl($scope, $http) {
+﻿var ngApp = angular.module("ngapp", []);
 
+ngApp.controller("mainCtrl", function ($scope, $http) {
     var alertError = function (message) {
         alert(["エラーが発生しました", message].join(" : "));
     };
@@ -33,7 +34,7 @@
         var price = $scope.newItemPrice;
         $http.post("/api/items", { name: name, price: price })
         .success(function (data, status) {
-            $scope.items.push({ name: name, price : price });
+            $scope.items.push({ name: name, price: price });
         }).error(function (error) {
             if (_.isObject(error)) {
                 alertError(error.message);
@@ -54,4 +55,4 @@
             alertError(error.message);
         });
     }
-};
+});
