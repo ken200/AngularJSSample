@@ -1,6 +1,6 @@
 ﻿var ngApp = angular.module("ngapp", []);
 
-ngApp.controller("mainCtrl", function ($scope, $http) {
+ngApp.controller("mainCtrl", ["$scope", "$http", function ($scope, $http) {
     var alertError = function (message) {
         alert(["エラーが発生しました", message].join(" : "));
     };
@@ -55,4 +55,4 @@ ngApp.controller("mainCtrl", function ($scope, $http) {
             alertError(error.message);
         });
     }
-});
+}]);
